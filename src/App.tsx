@@ -1,48 +1,64 @@
+// App.tsx
 import React, { useState } from "react";
-import 'maplibre-gl/dist/maplibre-gl.css';
-
 import Landing from "./components/Landing";
-import Sidebar from "./components/Sidebar";
-import TopBar from "./components/TopBar";
-import ChildcareMap from "./components/ChildcareMap";
+import MapApp from "./components/MapApp";
+import { AnimatePresence, motion } from "framer-motion";
 
-const MapApp: React.FC = () => {
+const App: React.FC = () => {
   const [showMap, setShowMap] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const gtaBounds: [[number, number], [number, number]] = [
-    [-80.1, 43.3],
-    [-78.5, 44.0],
-  ];
-
-  const [viewState, setViewState] = useState({
-    longitude: -79.3832,
-    latitude: 43.6532,
-    zoom: 14,
-  });
+  const handleExploreClick = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setShowMap(true);
+      setIsTransitioning(false);
+    }, 800); // duration of black fade in/out
+  };
 
   return (
-    <div className="min-h-screen bg-[#282828] text-[#ebdbb2] font-sans overflow-x-hidden">
-      {!showMap ? (
-        <Landing onExploreClick={() => setShowMap(true)} />
-      ) : (
-        <div className="h-screen w-screen grid grid-cols-[360px_1fr] bg-[#282828]">
-          <Sidebar />
-          <div className="flex flex-col h-full">
-            <TopBar />
-            <main className="flex-1 bg-[#1d2021] flex items-center justify-center relative rounded-tl-xl overflow-hidden">
-              <div className="absolute inset-0 bg-[#282828]">
-                <ChildcareMap
-                  viewState={viewState}
-                  setViewState={setViewState}
-                  gtaBounds={gtaBounds}
-                />
-              </div>
-            </main>
-          </div>
-        </div>
-      )}
-    </div>
+    <>
+      <AnimatePresence mode="wait">
+        {!showMap && !isTransitioning && (
+          <motion.div
+            key="landing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Landing onExploreClick={handleExploreClick} />
+          </motion.div>
+        )}
+
+        {showMap && !isTransitioning && (
+          <motion.div
+            key="mapapp"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <MapApp />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Fade-to-black overlay */}
+      <AnimatePresence>
+        {isTransitioning && (
+          <motion.div
+            key="fade"
+            className="fixed inset-0 bg-black z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
-export default MapApp;
+export default App;

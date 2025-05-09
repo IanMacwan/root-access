@@ -65,5 +65,5 @@ RootAccess was built as part of a research initiative exploring how **transit, h
 
 Have feedback, suggestions, or want to collaborate?  
 Reach out or fork the project — your contributions are welcome!  
-🌐 *Project developed by [Your Name], 2025*
+🌐 *Project developed by Ian Macwan, 2025*
 

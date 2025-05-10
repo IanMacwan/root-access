@@ -1,6 +1,6 @@
 # 🌱 RootAccess
 
-RootAccess is a **web-based mapping tool** that visualizes **spatial disparities in access to child care services** across the Greater Toronto Area (GTA). This interactive app is designed to support **equity-driven urban planning** by highlighting geographic inequalities in child care accessibility.
+RootAccess is a **web-based mapping tool** that visualizes **spatial disparities in access to child care services** across the Greater Toronto Area (GTA). This interactive app was built as part of a ![research project](https://github.com/IanMacwan/mapping-exclusion-research-data) and is designed to support **equity-driven urban planning** by highlighting geographic inequalities in child care accessibility.
 
 > 🔧 **Work in Progress** — This is an early-stage prototype. Features, data, and design will continue to evolve.
 
@@ -45,9 +45,9 @@ RootAccess is a **web-based mapping tool** that visualizes **spatial disparities
 
 ---
 
-## 🎯 Purpose
+## 🎯 Purpose And Research
 
-RootAccess was built as part of a research initiative exploring how **transit, housing, and urban planning** shape access to essential services. The app is intended to bring **visibility** to **underserved communities** and **support more inclusive child care planning**.
+RootAccess was built as part of a ![research project](https://github.com/IanMacwan/mapping-exclusion-research-data) exploring how **transit, housing, and urban planning** shape access to essential services. The app is intended to bring **visibility** to **underserved communities** and **support more inclusive child care planning**.
 
 ---
 

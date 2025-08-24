@@ -20,7 +20,8 @@ const MapApp: React.FC = () => {
   });
 
   const [searchArea, setSearchArea] = useState<[number, number] | null>(null);
-
+  
+  // this will change in the future to account for natural lang processing.
   const handleSearch = async (postalCode: string) => {
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?postalcode=${postalCode}&country=Canada&format=json`
